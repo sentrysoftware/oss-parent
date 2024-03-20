@@ -1,0 +1,21 @@
+<assembly>
+	<id>source</id>
+	<formats>
+		<format>jar</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<fileSets>
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory>${file.separator}</outputDirectory>
+            <excludes>
+                <exclude>target</exclude>
+            </excludes>
+			<includes>
+				<include>LICENSE</include>
+                <include>**/*.xml</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>

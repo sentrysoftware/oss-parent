@@ -1,0 +1,18 @@
+<assembly>
+	<id>javadoc</id>
+	<formats>
+		<format>jar</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<fileSets>
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory>${file.separator}</outputDirectory>
+			<includes>
+				<include>README.md</include>
+				<include>LICENSE</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>
