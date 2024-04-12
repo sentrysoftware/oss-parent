@@ -36,7 +36,7 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/sentrysoftware/oss-parent.git</connection>
-		<url>https://github.com/sentrysoftware/oss-parent</url>
+		<url>https://github.com/sentrysoftware/oss-parent/tree/${project.scm.tag}</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -54,6 +54,16 @@
 			<plugins>
 
 				<plugin>
+					<artifactId>maven-artifact-plugin</artifactId>
+					<version>3.5.0</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.7.0</version>
+				</plugin>
+
+				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.12.1</version>
 				</plugin>
@@ -61,6 +71,11 @@
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>3.1.1</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>3.1.0</version>
 				</plugin>
 
 				<plugin>
@@ -87,6 +102,11 @@
 				</plugin>
 
 				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+
+				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.3.1</version>
 				</plugin>
@@ -107,9 +127,20 @@
 				</plugin>
 
 				<plugin>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>3.2.3</version>
+				</plugin>
+
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>license-maven-plugin</artifactId>
 					<version>2.3.0</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.13</version>
 				</plugin>
 
 			</plugins>
@@ -117,15 +148,32 @@
 
 		<plugins>
 
+			<!-- artifact (Reproducible Build) -->
+			<plugin>
+				<artifactId>maven-artifact-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>buildinfo</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>buildinfo</goal>
+						</goals>
+						<configuration>
+							<reproducible>true</reproducible>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- source -->
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
-					<goals>
-						<goal>jar</goal>
-					</goals>
+						<goals>
+							<goal>jar</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
@@ -233,11 +281,6 @@
 				<version>2.3</version>
 			</plugin>
 
-			<!-- surefire -->
-			<plugin>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.2.3</version>
-			</plugin>
 
 			<!-- javadoc -->
 			<plugin>
@@ -278,34 +321,67 @@
 
 	<profiles>
 
+		<!-- Profile used for POM packaging projects -->
+		<profile>
+			<id>pompackaging</id>
+			<activation>
+				<property>
+					<name>packaging</name>
+					<value>pom</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+
+					<!-- build a fake javadoc JAR to workaround Maven Central rules -->
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<executions>
+
+							<execution>
+								<id>javadoc</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+								<configuration>
+									<descriptors>
+										<descriptor>src/assembly/javadoc.xml</descriptor>
+									</descriptors>
+									<attach>true</attach>
+								</configuration>
+							</execution>
+
+							<execution>
+								<id>source</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+								<configuration>
+									<descriptors>
+										<descriptor>src/assembly/source.xml</descriptor>
+									</descriptors>
+									<attach>true</attach>
+								</configuration>
+							</execution>
+
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
 		<!-- Profile for releasing the project -->
 		<profile>
 			<id>release</id>
 			<build>
 				<plugins>
 
-					<!-- artifact (Reproducible Build) -->
-					<plugin>
-						<artifactId>maven-artifact-plugin</artifactId>
-						<version>3.5.0</version>
-						<executions>
-							<execution>
-								<id>buildinfo</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>buildinfo</goal>
-								</goals>
-								<configuration>
-									<reproducible>true</reproducible>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
 					<!-- gpg to sign the released artifacts -->
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.1.0</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -328,7 +404,6 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.13</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
@@ -339,9 +414,7 @@
 
 					<!-- release -->
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-release-plugin</artifactId>
-						<version>3.0.1</version>
 						<configuration>
 							<tagNameFormat>v@{project.version}</tagNameFormat>
 						</configuration>
