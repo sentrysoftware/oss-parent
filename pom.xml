@@ -29,6 +29,14 @@
 		</repository>
 	</distributionManagement>
 
+	<licenses>
+		<license>
+			<name>Apache-2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/sentrysoftware/oss-parent/issues/</url>
@@ -39,6 +47,23 @@
 		<url>https://github.com/sentrysoftware/oss-parent/tree/${project.scm.tag}</url>
 		<tag>HEAD</tag>
 	</scm>
+
+	<developers>
+		<developer>
+			<name>Bertrand Martin (@bertysentry)</name>
+			<email>bertrand@sentrysoftware.com</email>
+			<roles>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Christophe Clermont (@ChristopheClermont)</name>
+			<email>christophe@sentrysoftware.com</email>
+			<roles>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
 
 	<properties>
 		<!-- UTF-8 -->
