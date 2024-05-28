@@ -22,7 +22,7 @@ You can use this parent POM by adding the following `parent` element to the begi
 <parent>
     <groupId>org.sentrysoftware</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>1.0.00-SNAPSHOT</version>
+    <version>2</version>
 </parent>
 ```
 
