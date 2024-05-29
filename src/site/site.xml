@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}">
+
+	<skin>
+		<groupId>org.sentrysoftware.maven</groupId>
+		<artifactId>sentry-maven-skin</artifactId>
+		<version>6.4.01</version>
+	</skin>
+
+	<custom>
+		<noDefaultLinks>true</noDefaultLinks>
+		<keywords>parent</keywords>
+	</custom>
+
+	<bannerLeft>
+		<src>images/sentry-logo-179x75px.png</src>
+		<href>https://sentrysoftware.com</href>
+	</bannerLeft>
+
+	<body>
+	
+		<links>
+			<item name="Fork on GitHub" href="${project.scm.url}" />
+		</links>
+
+		<menu ref="reports" />
+	</body>
+
+</project>
