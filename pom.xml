@@ -3,7 +3,7 @@
 
 	<groupId>org.sentrysoftware</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>3</version>
+	<version>4-SNAPSHOT</version>
 
 	<name>Open Source Software Parent</name>
 	<description>Maven Parent Configuration for Open Source Software Projects</description>
@@ -41,7 +41,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/sentrysoftware/oss-parent.git</connection>
 		<url>https://github.com/sentrysoftware/oss-parent/tree/${project.scm.tag}</url>
-		<tag>v3</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<developers>
