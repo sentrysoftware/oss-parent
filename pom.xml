@@ -446,8 +446,9 @@
 						<extensions>true</extensions>
 						<configuration>
 							<publishingServerId>central</publishingServerId>
-							<autoPublish>${env.AUTO_RELEASE_AFTER_CLOSE}</autoPublish>
+							<autoPublish>${env.AUTO_PUBLISH_AFTER_DEPLOY}</autoPublish>
 							<waitUntil>published</waitUntil>
+							<deploymentName>${project.name} ${project.version} ${project.build.outputTimestamp}</deploymentName>
 						</configuration>
 					</plugin>
 
