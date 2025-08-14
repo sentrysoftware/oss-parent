@@ -3,7 +3,7 @@
 
 	<groupId>org.sentrysoftware</groupId>
 	<artifactId>oss-parent</artifactId>
-	<version>3-SNAPSHOT</version>
+	<version>4-SNAPSHOT</version>
 
 	<name>Open Source Software Parent</name>
 	<description>Maven Parent Configuration for Open Source Software Projects</description>
