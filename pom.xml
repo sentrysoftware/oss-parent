@@ -179,6 +179,24 @@
 					<version>0.8.0</version>
 				</plugin>
 
+				<!-- changelog -->
+				<plugin>
+					<artifactId>maven-changelog-plugin</artifactId>
+					<version>3.0.0-M1</version>
+					<configuration>
+						<providerImplementations>
+							<git>jgit</git>
+						</providerImplementations>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-jgit</artifactId>
+							<version>2.1.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
@@ -317,7 +335,12 @@
 			<!-- changelog -->
 			<plugin>
 				<artifactId>maven-changelog-plugin</artifactId>
-				<version>2.3</version>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<providerImplementations>
+						<git>jgit</git>
+					</providerImplementations>
+				</configuration>
 			</plugin>
 
 
