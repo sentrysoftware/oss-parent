@@ -76,27 +76,27 @@
 
 				<plugin>
 					<artifactId>maven-artifact-plugin</artifactId>
-					<version>3.6.0</version>
+					<version>3.6.1</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
-					<version>3.7.1</version>
+					<version>3.8.0</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.14.0</version>
+					<version>3.14.1</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.1.2</version>
+					<version>3.1.4</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>3.2.7</version>
+					<version>3.2.8</version>
 				</plugin>
 
 				<plugin>
@@ -106,12 +106,12 @@
 
 				<plugin>
 					<artifactId>maven-invoker-plugin</artifactId>
-					<version>3.9.0</version>
+					<version>3.9.1</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.4.2</version>
+					<version>3.5.0</version>
 				</plugin>
 
 				<plugin>
@@ -134,17 +134,17 @@
 
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>3.0.1</version>
-				</plugin>
-
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.3.1</version>
 				</plugin>
 
 				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.4.0</version>
+				</plugin>
+
+				<plugin>
 					<artifactId>maven-shade-plugin</artifactId>
-					<version>3.6.0</version>
+					<version>3.6.1</version>
 				</plugin>
 
 				<plugin>
@@ -154,7 +154,7 @@
 
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.3.1</version>
+					<version>3.4.0</version>
 				</plugin>
 
 				<plugin>
@@ -164,7 +164,7 @@
 
 				<plugin>
 					<artifactId>maven-surefire-report-plugin</artifactId>
-					<version>3.5.3</version>
+					<version>3.5.4</version>
 				</plugin>
 
 				<plugin>
@@ -176,7 +176,7 @@
 				<plugin>
 					<groupId>org.sonatype.central</groupId>
 					<artifactId>central-publishing-maven-plugin</artifactId>
-					<version>0.8.0</version>
+					<version>0.9.0</version>
 				</plugin>
 
 				<!-- changelog -->
@@ -305,7 +305,7 @@
 			<!-- checkstyle -->
 			<plugin>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.5.0</version>
+				<version>3.6.0</version>
 				<configuration>
 					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 					<linkXref>true</linkXref>
@@ -359,7 +359,7 @@
 			<!-- Default project-info-reports -->
 			<plugin>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.5.0</version>
+				<version>3.9.0</version>
 				<reportSets>
 					<reportSet>
 						<reports>
