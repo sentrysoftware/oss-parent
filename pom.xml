@@ -470,7 +470,7 @@
 						<configuration>
 							<publishingServerId>central</publishingServerId>
 							<autoPublish>${env.AUTO_PUBLISH_AFTER_DEPLOY}</autoPublish>
-							<waitUntil>published</waitUntil>
+							<waitUntil>validated</waitUntil>
 							<deploymentName>${project.name} ${project.version} ${project.build.outputTimestamp}</deploymentName>
 						</configuration>
 					</plugin>
